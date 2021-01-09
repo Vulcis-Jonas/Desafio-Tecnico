@@ -1,50 +1,62 @@
-# Desafio-Tecnico
-Neste desafio você deve criar uma pequena aplicação para facilitar o gerenciamento de
-horários de uma clínica! Ela deve satisfazer as seguintes necessidades:
- Cadastrar regras de horários para atendimento
- Apagar regra de horário para atendimento
- Listar regras de horários para atendimento
- Listar horários disponíveis dentro de um intervalo
-Features
-Cadastro de regra de atendimento
-O cadastro de regras de horário para atendimento deve possibilitar que se disponibilize
-intervalos de horário para consulta, possibilitando regras para:
- Um dia especifico, por exemplo: estará disponível para atender dia 25/01/2021 nos
-intervalos de 9:30 até 10:20 e de 10:30 até as 11:00
- Diariamente, por exemplo: estará disponível para atender todos os dias das 9:30 até
-as 10:10
- Semanalmente, por exemplo: estará disponível para atender todas segundas e
-quartas das 14:00 até as 14:30
-Apagar regra
-Esta feature deve ser capaz de apagar uma regra específica criada pela ferramenta
-descrita em "Cadastro de regra de atendimento".
-Listar regras
-A ferramenta de listar deve exibir todas as regras de atendimento criadas pela feature
-descrita em "Cadastro de regra de atendimento".
-Horários disponíveis
-Esta função deve exibir os horários disponíveis, baseado nas regras criadas anteriormente,
-considerando um intervalo de datas informadas. O retorno deve seguir o formato
-exemplificado abaixo. Por exemplo, se o intervalo solicitado for 25/01/2021 e 29/01/2021
-teremos o seguinte modelo de resultado:
-Dia: 25/01/2021
-Horários: Das 14:00 às 15:00, Das 15:10 às 15:30
-Dia: 26/01/2021
-Horários: Das 14:00 às 15:00
-Dia: 29/01/2021
-Horários: Das 09:00 às 12:00, Das 14:00 às 15:00,
-Frontend
-O candidato pode optar por montar a interface da aplicação com CSS próprio ou utilizar
-bibliotecas prontas como Bootstrap, Materialize, PureCss, Skeleton, etc.
-Requisitos
-A entrega deverá ser realizada via GitHub. O candidato deverá criar um repositório no
-GitHub para realizar a entrega do projeto (enviar o link ao final do desenvolvimento).
-É necessário persistir as informações em alguma base de dados, de preferência MySql ou
-SQLite. Sendo necessário nos enviar o schema do seu banco junto com o código fonte.
-Se você fizer será um diferencial
- Utilizar Laravel
- Validar cadastro de regras para evitar conflito de horários
-Análise
-Serão avaliados os seguintes pontos:
-1 Solução do problema proposto
-2 Usabilidade
-3 Legibilidade do código
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
+
+## About Laravel
+
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
+
+## Learning Laravel
+
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+
+## Laravel Sponsors
+
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+
+### Premium Partners
+
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[Curotec](https://www.curotec.com/)**
+- **[OP.GG](https://op.gg)**
+
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Code of Conduct
+
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
