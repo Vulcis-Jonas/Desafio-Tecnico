@@ -9,37 +9,55 @@
         <link href="vendor/fontawesome-free-5.15.1-web/css/all.css" rel="stylesheet"> <!--load all styles -->
     </head>
     <body>
-        <header>
-            <h1>Sistema de agendamentos clinicos</h1>
-            <span>Desafio técnico proposto pela Edutec</span>
-        </header>
 
         <section>
-            <nav>
-                <a>Agendar</a>
-                <a>Exibir</a>
+            <nav class="navbar-vertical">
+                <a>
+                    Agendar
+                    <p>Cadastra regras de horário para atendimento.</p>
+                </a>
+                <a>
+                    Regras
+                    <p>Com esta ferramenta podes visualizar e gerenciar suas regras.</p>
+                </a>
+                <a>
+                    Pesquisar
+                    <p>Exibir os horários disponíveis, considerando um intervalo de datas. </p>
+                </a>
             </nav>
-            <nav>
-                <button>Um vez</button>
-                <button>Diariamente</button>
-                <button>Semanalmente</button>
-            </nav>
-            <form action="" class="form">
-                <div>
-                    <input type="checkbox" name="" id="">
-                    <input type="checkbox" name="" id="">
-                    <input type="checkbox" name="" id="">
-                    <input type="checkbox" name="" id="">
-                    <input type="checkbox" name="" id="">
-                    <input type="checkbox" name="" id="">
-                    <input type="checkbox" name="" id="">
-                </div>
-                <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
-                <div>
-                    <input type="time" name="" id="">
-                    <input type="time" name="" id="">
-                </div>
-            </form>
+            <aside>
+                <header>
+                    <h1>Sistema de agendamentos clinicos</h1>
+                    <span>Desafio técnico proposto pela Edutec</span>
+                </header>
+                    <form action="" class="form">
+                        <div class="custom-radios">
+                            <form>
+                                <div class="radio-group">
+                                    <input type="radio" id="option-one" name="selector">
+                                    <label for="option-one">Uma vez</label>
+                                    <input type="radio" id="option-two" name="selector">
+                                    <label for="option-two">Diariamente</label>
+                                    <input type="radio" id="option-three" name="selector">
+                                    <label for="option-three">Semanalmente</label>
+                                </div>
+                            </form>
+                        <div>
+                            <input type="checkbox" name="" id="">
+                            <input type="checkbox" name="" id="">
+                            <input type="checkbox" name="" id="">
+                            <input type="checkbox" name="" id="">
+                            <input type="checkbox" name="" id="">
+                            <input type="checkbox" name="" id="">
+                            <input type="checkbox" name="" id="">
+                        </div>
+                        <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                        <div>
+                            <input type="time" name="" id="">
+                            <input type="time" name="" id="">
+                        </div>
+                    </form>
+            </aside>
         </section>
         <footer>
             <span>
