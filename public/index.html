@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Laravel</title>
+        <link rel="stylesheet" href="resources/css/app.css">
+        <link href="vendor/fontawesome-free-5.15.1-web/css/all.css" rel="stylesheet"> <!--load all styles -->
+    </head>
+    <body>
+        <header>
+            <h1>Sistema de agendamentos clinicos</h1>
+            <span>Desafio técnico proposto pela Edutec</span>
+        </header>
+
+        <section>
+            <nav>
+                <a>Agendar</a>
+                <a>Exibir</a>
+            </nav>
+            <nav>
+                <button>Um vez</button>
+                <button>Diariamente</button>
+                <button>Semanalmente</button>
+            </nav>
+            <form action="" class="form">
+                <div>
+                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="" id="">
+                </div>
+                <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                <div>
+                    <input type="time" name="" id="">
+                    <input type="time" name="" id="">
+                </div>
+            </form>
+        </section>
+        <footer>
+            <span>
+                <h2><a href="">Jonas Teixeira</a></h2>
+                <p>Uma pequena aplicação para facilitar o gerenciamento de
+                    horários de uma clínica! Ela deve satisfazer as seguintes necessidades:</p>
+            </span>
+            <ul>
+                <li>Cadastrar e apagar regras<i class="fas fa-check"></i></li>
+                <li>Listar regras e horários<i class="fas fa-check"></i></li>
+                <li>Fonte no <a href="">GitHub</a><i class="fas fa-check"></i></li>
+                <li>Laravel<i class="fas fa-check"></i></li>
+            </ul>
+        </footer>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
+        <script>
+            $(function() {
+                $('input[name="daterange"]').daterangepicker({
+                    opens: 'left'
+                }, function(start, end, label) {
+                    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                });
+            });
+        </script>
+    </body>
+</html>
