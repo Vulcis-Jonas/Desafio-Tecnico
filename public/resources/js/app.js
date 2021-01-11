@@ -2,8 +2,8 @@ const btnSelectTypeRule =  $('.radio-group > input');
 const btnSelectContent =  $('.navbar-vertical > a');
 
 const toggleRule = function (element) {
-
     if ($(element).css('display') === 'none') {
+        $('.toggle-item-rule').removeClass('ocult');
         $('.toggle-item-rule').fadeOut(0);
         $(element).fadeIn(300);
         return;
@@ -11,8 +11,8 @@ const toggleRule = function (element) {
 }
 
 const toggleContent = function (element) {
-
     if ($(element).css('display') === 'none') {
+        $('.toggle-item-content').removeClass('ocult');
         $('.toggle-item-content').fadeOut(0);
         $(element).fadeIn(300);
         return;
@@ -38,5 +38,6 @@ $(btnSelectContent[1]).on( "click", function() {
     toggleContent('.list-rules');
 });
 $(btnSelectContent[2]).on( "click", function() {
-    toggleContent('.form-list-times');
+    toggleContent('.list-times');
 });
+
