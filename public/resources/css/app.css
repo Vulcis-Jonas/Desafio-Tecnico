@@ -57,8 +57,6 @@ button {
     transition: all 0.3s;
 }
 
-button,
-input[type="submit"],
 input[type="reset"] {
     background: none;
     color: inherit;
@@ -100,6 +98,49 @@ input::placeholder {
     /* Firefox */
 }
 
+input[type="radio"],
+input[type="checkbox"] {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+}
+
+label {
+    color: #222;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 10px 30px;
+    transition: all 0.3s;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"] {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    box-shadow: 0px 0px 5px #ccc;
+    border-radius: 5px;
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: 2.2vh;
+    color: #222;
+}
+
+input[type="radio"]:checked + label {
+    margin-left: 3px;
+    margin-right: 3px;
+    border-bottom: 2px solid dodgerblue;
+}
+
+input[type="checkbox"]:checked + label {
+    margin-left: 3px;
+    margin-right: 3px;
+    border-bottom: 2px solid dodgerblue;
+}
+
 /* Box Model */
 
 *,
@@ -137,29 +178,15 @@ input::placeholder {
     /* cursor: default; */
 }
 
-.ocult {
-    display: none;
+.center {
+    position: relative;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
 }
 
-.temp {
-    display: block;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    max-width: 1000px;
-    height: 100%;
-    transform: translate(-50%, -50%);
-    font-size: 1rem;
-    border-radius: 1vw;
-    overflow-y: scroll;
-    opacity: 1;
-    z-index: 2;
-    scrollbar-color: transparent transparent;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    z-index: 1000;
-    background: red !important;
+.ocult {
+    display: none;
 }
 
 section {
@@ -178,16 +205,16 @@ section {
     height: 100%;
     font-size: 2.5vh;
     box-shadow: 1px 0px 3px #ccc;
-    transition: all 1s;
 }
 .navbar-vertical a {
-    padding: 1vh 3vw;
+    padding: 2vh 2vw;
     font-weight: 500;
+    transition: all 0.3s;
 }
 
 .navbar-vertical a:hover {
     box-shadow: 0px 0px 10px #ccc;
-    padding: 1vh 2.5vw;
+    padding: 2vh 2.5vw;
 }
 
 .navbar-vertical a p {
@@ -201,9 +228,72 @@ section aside {
     height: 85vh;
     row-gap: 1.5vh;
     border-top: 1px solid #ddd;
-    font-size: 1.7vh;
 }
 
+.form-create-rule {
+    display: inline-block;
+    width: 100%;
+    height: 400px;
+    font-size: 2vh;
+    color: #222;
+}
+
+.radio-group {
+    position: relative;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
+    box-shadow: 0px 0px 5px #ccc;
+    display: inline-block;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.checkbox-group {
+    box-shadow: 0px 0px 5px #ccc;
+    display: inline-block;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.input-date-rule {
+    min-width: 400px;
+}
+
+.form-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -0%);
+}
+
+.form-time i {
+    margin: 0 20px;
+}
+
+.btn-form-submit {
+    display: inline-block;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    border-bottom: 2px solid dodgerblue;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 2.2vh;
+    font-weight: bold;
+}
+
+.btn-form-submit:hover {
+    padding: 5px 30px;
+    background-color: dodgerblue;
+    color: #eee;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #ccc;
+}
 /* header */
 header {
     display: grid;
@@ -258,32 +348,10 @@ footer > ul > li > i {
     color: orangered;
 }
 
+footer > ul > li:nth-child(3) i {
+    color: limegreen;
+}
+
 footer > ul > li:last-child i {
-    color: orangered;
-}
-
-input[type="radio"] {
-    position: absolute;
-    visibility: hidden;
-    display: none;
-}
-
-label {
-    color: #222;
-    display: inline-block;
-    cursor: pointer;
-    font-weight: bold;
-    padding: 5px 20px;
-}
-
-input[type="radio"]:checked + label {
-    color: #eee;
-    background: #222;
-}
-
-.radio-group {
-    border: double 2px #222;
-    display: inline-block;
-    margin: 20px;
-    border-radius: 10px;
+    color: yellow;
 }

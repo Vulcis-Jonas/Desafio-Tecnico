@@ -30,33 +30,48 @@
                     <h1>Sistema de agendamentos clinicos</h1>
                     <span>Desafio técnico proposto pela Edutec</span>
                 </header>
-                    <form action="" class="form">
-                        <div class="custom-radios">
-                            <form>
-                                <div class="radio-group">
-                                    <input type="radio" id="option-one" name="selector">
-                                    <label for="option-one">Uma vez</label>
-                                    <input type="radio" id="option-two" name="selector">
-                                    <label for="option-two">Diariamente</label>
-                                    <input type="radio" id="option-three" name="selector">
-                                    <label for="option-three">Semanalmente</label>
-                                </div>
-                            </form>
-                        <div>
-                            <input type="checkbox" name="" id="">
-                            <input type="checkbox" name="" id="">
-                            <input type="checkbox" name="" id="">
-                            <input type="checkbox" name="" id="">
-                            <input type="checkbox" name="" id="">
-                            <input type="checkbox" name="" id="">
-                            <input type="checkbox" name="" id="">
+
+                <form action="" class="form-create-rule toggle-item-content center  no-selectable">
+                    <div class="custom-radios">
+                        <div class="radio-group">
+                            <input type="radio" id="option-one" name="selector">
+                            <label for="option-one">Uma vez</label>
+                            <input type="radio" id="option-two" name="selector">
+                            <label for="option-two">Diariamente</label>
+                            <input type="radio" id="option-three" name="selector">
+                            <label for="option-three">Semanalmente</label>
                         </div>
-                        <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
-                        <div>
-                            <input type="time" name="" id="">
-                            <input type="time" name="" id="">
+                    </div>
+                    <input type="date" name="birthday" class="toggle-item-rule input-date-rule center"/>
+                    <div class="custom-checkbox toggle-item-rule ocult">
+                        <div class="checkbox-group center ">
+                            <input type="checkbox" id="option-sun" name="selector">
+                            <label for="option-sun">Dom</label>
+                            <input type="checkbox" id="option-mod" name="selector">
+                            <label for="option-mod">Seg</label>
+                            <input type="checkbox" id="option-tue" name="selector">
+                            <label for="option-tue">Ter</label>
+                            <input type="checkbox" id="option-wed" name="selector">
+                            <label for="option-wed">Qua</label>
+                            <input type="checkbox" id="option-thu" name="selector">
+                            <label for="option-thu">Qui</label>
+                            <input type="checkbox" id="option-fri" name="selector">
+                            <label for="option-fri">Sex</label>
+                            <input type="checkbox" id="option-sat" name="selector">
+                            <label for="option-sat">Sab</label>
                         </div>
-                    </form>
+                    </div>
+                    <div class="form-time center" method="post">
+                        <input type="time" name="" id="">
+                        <i class="fas fa-minus"></i>
+                        <input type="time" name="" id="">
+                    </div>
+                    <a class="center btn-form-submit">Criar regra</a>
+                </form>
+                <ul class="toggle-item-content list-rules ocult">asdasdas</ul>
+                <form action="" method="post" class="form-list-times toggle-item-content ocult">
+                    <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                </form>
             </aside>
         </section>
         <footer>
@@ -72,6 +87,8 @@
                 <li>Laravel<i class="fas fa-check"></i></li>
             </ul>
         </footer>
+        <script type="text/javascript" src="vendor/jquery/jquery-3.5.1.min.js"></script>
+        <script type="text/javascript" src="resources/js/app.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
