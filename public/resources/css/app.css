@@ -1,0 +1,452 @@
+/* -----------------------------------*/
+/* ---------->>> GLOBAL <<<-----------*/
+/* -----------------------------------*/
+
+/* GLOBAL > RESET
+//////////////////////////////////////*/
+
+/**
+* Estilos Globais
+*
+* @section global reset
+*/
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
+/* @font-face {
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: 400;
+    src: url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+    font-display: swap;
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    --theme-font-color: rgb(30, 40, 60);
+    /*    overflow: hidden;*/
+}
+
+img,
+picture,
+video,
+embed {
+    max-width: 100%;
+}
+
+body {
+    font-size: 62.5%;
+    max-width: 100%;
+    font-family: "Nunito", sans-serif;
+    overflow: auto;
+    scrollbar-color: transparent transparent;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    background-color: #eee;
+    color: #222;
+    /*    overflow: hidden;*/
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+a,
+button {
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+a:hover,
+button:hover {
+    cursor: pointer;
+    text-decoration: none;
+    text-shadow: 0 0 1px #fff, 0 0 1px #fff;
+}
+
+a:visited {
+    color: inherit !important;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #f9d4ff;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+    box-shadow: inset 7px 10px 12px #f0f0f0;
+}
+
+li {
+    list-style: none;
+}
+
+input,
+input:focus {
+    font-family: "Nunito";
+    border: none;
+    outline: none;
+    background: none;
+}
+
+input::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(210, 210, 210, 1);
+    opacity: 1;
+    font-weight: 100;
+    /* Firefox */
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+}
+
+label {
+    color: #222;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 10px 30px;
+    transition: all 0.3s;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"] {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    box-shadow: 0px 0px 5px #ccc;
+    border-radius: 5px;
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: 2.2vh;
+    color: #222;
+}
+
+input[type="radio"]:checked + label {
+    margin-left: 3px;
+    margin-right: 3px;
+    border-bottom: 2px solid dodgerblue;
+}
+
+input[type="checkbox"]:checked + label {
+    margin-left: 3px;
+    margin-right: 3px;
+    border-bottom: 2px solid dodgerblue;
+}
+
+/* Box Model */
+
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* Utilitarios */
+
+.disable {
+    cursor: not-allowed !important;
+    filter: contrast(0);
+}
+
+.invisible {
+    display: none !important;
+}
+
+.no-selectable {
+    -webkit-touch-callout: none;
+    /* iPhone OS, Safari */
+    -webkit-user-select: none;
+    /* Chrome, Safari 3 */
+    -khtml-user-select: none;
+    /* Safari 2 */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+ */
+    user-select: none;
+    /* Possível implementação no futuro */
+    /* cursor: default; */
+}
+
+.center {
+    position: relative;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
+}
+
+.ocult {
+    display: none !important;
+}
+
+section {
+    display: flex;
+    height: 85vh;
+    font-size: 1.7vh;
+}
+
+.navbar-vertical {
+    display: grid;
+    align-content: center;
+    align-items: center;
+    row-gap: 5vh;
+    width: 40vw;
+    max-width: 300px;
+    height: 100%;
+    font-size: 2.5vh;
+    box-shadow: 1px 0px 3px #ccc;
+}
+.navbar-vertical a {
+    padding: 2vh 2vw;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.navbar-vertical a:hover {
+    box-shadow: 0px 0px 10px #ccc;
+    padding: 2vh 2.5vw;
+}
+
+.navbar-vertical a p {
+    font-size: 1.5vh;
+    font-weight: 300;
+}
+
+section aside {
+    display: grid;
+    width: 100%;
+    height: 85vh;
+    row-gap: 1.5vh;
+    border-top: 1px solid #ddd;
+}
+
+/* header */
+header {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    row-gap: 1vh;
+    height: 15vh;
+    text-align: center;
+    font-size: 1.8vh;
+    box-shadow: 5px 0px 5px #ccc;
+}
+
+header > span {
+    position: relative;
+    font-size: 1.5vh;
+    text-align: right;
+}
+header > span p {
+}
+
+.form-create-rule {
+    display: inline-block;
+    width: 100%;
+    height: 400px;
+    font-size: 2vh;
+    color: #222;
+}
+
+.radio-group {
+    position: relative;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
+    box-shadow: 0px 0px 5px #ccc;
+    display: inline-block;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.checkbox-group {
+    box-shadow: 0px 0px 5px #ccc;
+    display: inline-block;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.input-date-rule {
+}
+
+.form-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 65vw;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -0%);
+}
+
+.form-time i {
+    margin: 0 20px;
+}
+
+.btn-form-submit {
+    display: inline-block;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    border-bottom: 2px solid dodgerblue;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 2.2vh;
+    font-weight: bold;
+}
+
+.btn-form-submit:hover {
+    padding: 5px 30px;
+    background-color: dodgerblue;
+    color: #eee;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #ccc;
+}
+
+.list-rules {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 2vh;
+    color: #222;
+}
+
+.list-rules > p {
+    margin-bottom: 30px;
+}
+
+.result-search {
+    max-height: 58vh;
+    overflow: auto;
+    scrollbar-color: transparent transparent;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.result-search li {
+    display: grid;
+    grid-template-columns: auto auto;
+    border-radius: 5px;
+    max-width: 500px;
+    margin: auto auto;
+    padding: 10px;
+    transition: all 0.3s;
+}
+
+.result-search li:hover {
+    box-shadow: 0px 0px 5px #ccc;
+}
+
+.result-search li span {
+    text-align: left;
+    margin: 7px 15px;
+}
+.result-search li i {
+    display: flex;
+    margin: auto auto;
+    padding: 10px;
+    width: 50px;
+    font-size: 1.5em;
+    color: gray;
+    transition: color 0.3s;
+}
+
+.result-search li i:hover {
+    cursor: pointer;
+    color: orangered;
+}
+
+.list-times {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-size: 2vh;
+    color: #222;
+}
+
+.list-times > input {
+    display: inline-block;
+    width: 60vw;
+    max-width: 500px;
+    text-align: center;
+    font-size: 2vh;
+    color: #222;
+}
+
+.list-times > .result-search li {
+    grid-template-columns: auto 0;
+}
+
+.list-times > .result-search li span {
+    text-align: center !important;
+}
+
+/* footer */
+footer {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 15vh;
+    font-size: 1.4vh;
+    background-color: #222;
+    color: #eee;
+}
+
+footer > span {
+    display: grid;
+    row-gap: 1vh;
+    max-width: 40vw;
+    word-wrap: break-word;
+}
+
+footer > ul {
+    width: auto;
+    text-align: right;
+}
+
+footer > ul > li {
+    padding: 3px 2vh;
+}
+
+footer > ul > li > i {
+    padding: 0px 10px;
+    color: orangered;
+}
+
+footer > ul > li:nth-child(3) i {
+    color: limegreen;
+}
+
+footer > ul > li:last-child i {
+    color: yellow;
+}
