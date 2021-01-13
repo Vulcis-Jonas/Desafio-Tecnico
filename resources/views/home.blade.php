@@ -7,6 +7,7 @@
         <title>Laravel</title>
         <link rel="stylesheet" href="resources/css/app.css">
         <link href="vendor/fontawesome-free-5.15.1-web/css/all.css" rel="stylesheet"> <!--load all styles -->
+        <link rel="stylesheet" href="resources/css/jquery.timepicker.css">
     </head>
     <body>
 
@@ -16,7 +17,7 @@
                     Agendar
                     <p>Cadastra regras de horário para atendimento.</p>
                 </a>
-                <a>
+                <a href="{{ URL::route('show') }}" >
                     Regras
                     <p>Com esta ferramenta podes visualizar e gerenciar suas regras.</p>
                 </a>
@@ -31,45 +32,51 @@
                     <span>Desafio técnico proposto pela Edutec</span>
                 </header>
 
-                <form action="" class="form-create-rule toggle-item-content center  no-selectable">
+                <form action="{{ route('registrar_regra_diaria') }}" name="theForm" class="form-create-rule toggle-item-content center  no-selectable" method= "POST">
+                    @csrf
                     <div class="custom-radios">
                         <div class="radio-group">
-                            <input type="radio" id="option-one" name="selector">
+                            <input type="radio" id="option-one" name="type_rule" value="1">
                             <label for="option-one">Uma vez</label>
-                            <input type="radio" id="option-two" name="selector">
+                            <input type="radio" id="option-two" name="type_rule" value="2">
                             <label for="option-two">Diariamente</label>
-                            <input type="radio" id="option-three" name="selector">
+                            <input type="radio" id="option-three" name="type_rule" value="3">
                             <label for="option-three">Semanalmente</label>
                         </div>
                     </div>
                     <input type="date" name="birthday" class="toggle-item-rule input-date-rule center"/>
                     <div class="custom-checkbox ocult toggle-item-rule">
                         <div class="checkbox-group center ">
-                            <input type="checkbox" id="option-sun" name="selector">
+                            <input type="radio" id="option-sun" name="weekday_rule" value='Dom'>
                             <label for="option-sun">Dom</label>
-                            <input type="checkbox" id="option-mod" name="selector">
+                            <input type="radio" id="option-mod" name="weekday_rule" value='Seg'>
                             <label for="option-mod">Seg</label>
-                            <input type="checkbox" id="option-tue" name="selector">
+                            <input type="radio" id="option-tue" name="weekday_rule" value='Ter'>
                             <label for="option-tue">Ter</label>
-                            <input type="checkbox" id="option-wed" name="selector">
+                            <input type="radio" id="option-wed" name="weekday_rule" value='Qua'>
                             <label for="option-wed">Qua</label>
-                            <input type="checkbox" id="option-thu" name="selector">
+                            <input type="radio" id="option-thu" name="weekday_rule" value='Qui'>
                             <label for="option-thu">Qui</label>
-                            <input type="checkbox" id="option-fri" name="selector">
+                            <input type="radio" id="option-fri" name="weekday_rule" value='Sex'>
                             <label for="option-fri">Sex</label>
-                            <input type="checkbox" id="option-sat" name="selector">
+                            <input type="radio" id="option-sat" name="weekday_rule" value='Sab'>
                             <label for="option-sat">Sab</label>
                         </div>
                     </div>
                     <div class="form-time center" method="post">
-                        <input type="time" name="" id="">
+                        <input class="timepicker timepicker-with-dropdown text-center" name="time_start" required>
                         <i class="fas fa-minus"></i>
-                        <input type="time" name="" id="">
+                        <input class="timepicker timepicker-with-dropdown text-center" name="time_end" required>
                     </div>
-                    <a class="center btn-form-submit">Criar regra</a>
+                    <button type="submit" class="center btn-form-submit">Criar regra</button>
                 </form>
 
                 <div class="toggle-item-content list-rules ocult ">
+                    <?php
+                        $results = DB::select('SELECT * FROM desafio_db.rules;');
+                        echo '<script>console.log(' . json_encode($results) . ')</script>';
+                    ?>
+
                     <p>Aqui está uma listar de todas as regras de atendimento criadas.</p>
                     <ul class="result-search">
                     <li>
@@ -191,6 +198,7 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <script src="vendor/timepicker/jquery.timepicker.js"></script>
 
         <script type="text/javascript" src="resources/js/app.js"></script>
 

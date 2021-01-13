@@ -293,9 +293,6 @@ header > span p {
     margin: 10px;
 }
 
-.input-date-rule {
-}
-
 .form-time {
     display: flex;
     align-items: center;
@@ -305,6 +302,24 @@ header > span p {
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -0%);
+}
+
+.timepicker {
+    width: 25vw;
+    max-width: 200px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    box-shadow: 0px 0px 5px #ccc;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: 2vh;
+    color: #222;
+}
+
+.timepicker * {
 }
 
 .form-time i {

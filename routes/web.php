@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RulesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
+
+Route::get('/', [RulesController::class, 'create'])->name('main');
+Route::get('/show', [RulesController::class, 'show'])->name('show');
+Route::get('/rules', [RulesController::class, 'index'])->name('rules');
+Route::post('/create/rules', [RulesController::class, 'store'])->name('registrar_regra_diaria');
+
