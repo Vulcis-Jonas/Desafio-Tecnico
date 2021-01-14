@@ -44,7 +44,7 @@
                             <label for="option-three">Semanalmente</label>
                         </div>
                     </div>
-                    <input type="date" name="birthday" class="toggle-item-rule input-date-rule center"/>
+                    <input type="date" name="date_rule" class="toggle-item-rule input-date-rule center"/>
                     <div class="custom-checkbox ocult toggle-item-rule">
                         <div class="checkbox-group center ">
                             <input type="radio" id="option-sun" name="weekday_rule" value='Dom'>
