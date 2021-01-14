@@ -38,11 +38,11 @@
                     <span>Desafio técnico proposto pela Edutec</span>
                 </header>
 
-                <form action="{{ route('registrar_regra_diaria') }}" name="theForm" class="form-create-rule toggle-item-content center  no-selectable" method= "POST">
+                <form action="{{ route('store') }}" name="theForm" class="form-create-rule toggle-item-content center  no-selectable" method= "POST">
                     @csrf
                     <div class="custom-radios">
                         <div class="radio-group">
-                            <input type="radio" id="option-one" name="type_rule" value="Uma vez">
+                            <input type="radio" id="option-one" name="type_rule" value="Uma vez" checked>
                             <label for="option-one">Uma vez</label>
                             <input type="radio" id="option-two" name="type_rule" value="Diariamente">
                             <label for="option-two">Diariamente</label>
@@ -53,7 +53,7 @@
                     <input type="date" name="date_rule" class="toggle-item-rule input-date-rule center"/>
                     <div class="custom-checkbox ocult toggle-item-rule">
                         <div class="checkbox-group center ">
-                            <input type="radio" id="option-sun" name="weekday_rule" value='Domingo'>
+                            <input type="radio" id="option-sun" name="weekday_rule" value='Domingo' checked>
                             <label for="option-sun">Dom</label>
                             <input type="radio" id="option-mod" name="weekday_rule" value='Segunda'>
                             <label for="option-mod">Seg</label>
@@ -93,7 +93,13 @@
                                 @endif
                                 <p>Horários: {{ $rule->time_start }} ás {{ $rule->time_start }}</p>
                             </span>
-                            <i class="fas fa-trash"></i>
+                            <form action="{{ route('destroy', $rule->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                                <i class="fas fa-trash" ></i>
+                            </button>
+                            </form>
                         </li>
                         @endforeach
                     </ul>

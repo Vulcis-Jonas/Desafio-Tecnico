@@ -33,7 +33,7 @@ class RulesController extends Controller
      */
     public function create(Rules $rule)
     {
-        $rules = Rules::latest()->paginate(5);
+        $rules = Rules::latest()->paginate();
 
         return view('home', compact('rules'));
     }
@@ -103,5 +103,8 @@ class RulesController extends Controller
     public function destroy($id)
     {
         //
+        $rules = Rules::find($id);
+
+        return view('home');
     }
 }
