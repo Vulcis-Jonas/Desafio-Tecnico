@@ -37,13 +37,8 @@ body {
     font-size: 62.5%;
     max-width: 100%;
     font-family: "Nunito", sans-serif;
-    overflow: auto;
-    scrollbar-color: transparent transparent;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
     background-color: #eee;
     color: #222;
-    /*    overflow: hidden;*/
 }
 
 body::-webkit-scrollbar {

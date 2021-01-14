@@ -23,8 +23,6 @@ class RulesController extends Controller
 
     public function index()
     {
-        $rules = Rules::latest()->paginate(5);
-        dd($rules->items());
         //return view(regras);
     }
 
@@ -33,9 +31,11 @@ class RulesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Rules $rule)
     {
-        return view('home');
+        $rules = Rules::latest()->paginate(5);
+
+        return view('home', compact('rules'));
     }
 
     /**
@@ -66,7 +66,9 @@ class RulesController extends Controller
      */
     public function show(Rules $rule)
     {
-        return view('home', compact('rule'));
+        $rules = Rules::latest()->paginate(5);
+
+        return view('home', compact('rules'));
     }
 
     /**

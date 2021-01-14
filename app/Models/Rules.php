@@ -12,6 +12,10 @@ class Rules extends Model
     protected $table = 'rules';
     public $timestamps = true;
 
+    protected $casts = [
+        'cost' => 'float'
+    ];
+
     protected $fillable = [
         'type_rule',
         'date_rule',

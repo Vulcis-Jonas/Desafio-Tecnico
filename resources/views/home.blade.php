@@ -11,13 +11,19 @@
     </head>
     <body>
 
+        <?php
+            $query = DB::select('SELECT * FROM desafio_db.rules;');
+            $results = json_encode($query);
+        ?>
+
         <section>
             <nav class="navbar-vertical">
                 <a>
                     Agendar
                     <p>Cadastra regras de horário para atendimento.</p>
                 </a>
-                <a href="{{ URL::route('show') }}" >
+                <!-- href="{{ URL::route('show') }}" -->
+                <a >
                     Regras
                     <p>Com esta ferramenta podes visualizar e gerenciar suas regras.</p>
                 </a>
@@ -36,30 +42,30 @@
                     @csrf
                     <div class="custom-radios">
                         <div class="radio-group">
-                            <input type="radio" id="option-one" name="type_rule" value="1">
+                            <input type="radio" id="option-one" name="type_rule" value="Uma vez">
                             <label for="option-one">Uma vez</label>
-                            <input type="radio" id="option-two" name="type_rule" value="2">
+                            <input type="radio" id="option-two" name="type_rule" value="Diariamente">
                             <label for="option-two">Diariamente</label>
-                            <input type="radio" id="option-three" name="type_rule" value="3">
+                            <input type="radio" id="option-three" name="type_rule" value="Semanalmente">
                             <label for="option-three">Semanalmente</label>
                         </div>
                     </div>
                     <input type="date" name="date_rule" class="toggle-item-rule input-date-rule center"/>
                     <div class="custom-checkbox ocult toggle-item-rule">
                         <div class="checkbox-group center ">
-                            <input type="radio" id="option-sun" name="weekday_rule" value='Dom'>
+                            <input type="radio" id="option-sun" name="weekday_rule" value='Domingo'>
                             <label for="option-sun">Dom</label>
-                            <input type="radio" id="option-mod" name="weekday_rule" value='Seg'>
+                            <input type="radio" id="option-mod" name="weekday_rule" value='Segunda'>
                             <label for="option-mod">Seg</label>
-                            <input type="radio" id="option-tue" name="weekday_rule" value='Ter'>
+                            <input type="radio" id="option-tue" name="weekday_rule" value='Terça'>
                             <label for="option-tue">Ter</label>
-                            <input type="radio" id="option-wed" name="weekday_rule" value='Qua'>
+                            <input type="radio" id="option-wed" name="weekday_rule" value='Quarta'>
                             <label for="option-wed">Qua</label>
-                            <input type="radio" id="option-thu" name="weekday_rule" value='Qui'>
+                            <input type="radio" id="option-thu" name="weekday_rule" value='Quinta'>
                             <label for="option-thu">Qui</label>
-                            <input type="radio" id="option-fri" name="weekday_rule" value='Sex'>
+                            <input type="radio" id="option-fri" name="weekday_rule" value='Sexta'>
                             <label for="option-fri">Sex</label>
-                            <input type="radio" id="option-sat" name="weekday_rule" value='Sab'>
+                            <input type="radio" id="option-sat" name="weekday_rule" value='Sábado'>
                             <label for="option-sat">Sab</label>
                         </div>
                     </div>
@@ -72,62 +78,24 @@
                 </form>
 
                 <div class="toggle-item-content list-rules ocult ">
-                    <?php
-                        $results = DB::select('SELECT * FROM desafio_db.rules;');
-                        echo '<script>console.log(' . json_encode($results) . ')</script>';
-                    ?>
 
                     <p>Aqui está uma listar de todas as regras de atendimento criadas.</p>
                     <ul class="result-search">
-                    <li>
-                        <span>
-                            <h4>Dia: 25 de Agosto de 2021</h4>
-                            <p>Horários: 14:00 às 15:00</p>
-                        </span>
-                        <i class="fas fa-trash"></i>
-                    </li>
-                    <li>
-                        <span>
-                            <h4>Dia: 29 de Setembro de 2021</h4>
-                            <p>Horários: 08:30 às 11:00</p>
-                        </span>
-                        <i class="fas fa-trash"></i>
-                    </li>
-                    <li>
-                        <span>
-                            <h4>Dia: 25 de Agosto de 2021</h4>
-                            <p>Horários: 14:00 às 15:00</p>
-                        </span>
-                        <i class="fas fa-trash"></i>
-                    </li>
-                    <li>
-                        <span>
-                            <h4>Dia: 25 de Agosto de 2021</h4>
-                            <p>Horários: 14:00 às 15:00</p>
-                        </span>
-                        <i class="fas fa-trash"></i>
-                    </li>
-                    <li>
-                        <span>
-                            <h4>Dia: 25 de Agosto de 2021</h4>
-                            <p>Horários: 14:00 às 15:00</p>
-                        </span>
-                        <i class="fas fa-trash"></i>
-                    </li>
-                    <li>
-                        <span>
-                            <h4>Dia: 25 de Agosto de 2021</h4>
-                            <p>Horários: 14:00 às 15:00</p>
-                        </span>
-                        <i class="fas fa-trash"></i>
-                    </li>
-                    <li>
-                        <span>
-                            <h4>Dia: 25 de Agosto de 2021</h4>
-                            <p>Horários: 14:00 às 15:00</p>
-                        </span>
-                        <i class="fas fa-trash"></i>
-                    </li>
+                        @foreach ($rules as $rule)
+                        <li>
+                            <span>
+                                <h4>Tipo: {{ $rule->type_rule }}</h4>
+                                @if ($rule->date_rule)
+                                    <p>Dia: {{ $rule->date_rule }}</p>
+                                @endif
+                                @if ($rule->weekday_rule)
+                                    <p>Dia da semana: {{ $rule->weekday_rule }} </p>
+                                @endif
+                                <p>Horários: {{ $rule->time_start }} ás {{ $rule->time_start }}</p>
+                            </span>
+                            <i class="fas fa-trash"></i>
+                        </li>
+                        @endforeach
                     </ul>
                 </div>
 

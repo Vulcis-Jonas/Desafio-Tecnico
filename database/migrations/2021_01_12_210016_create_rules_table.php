@@ -18,7 +18,7 @@ class CreateRulesTable extends Migration
     {
         Schema::create('rules', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('type_rule');
+            $table->char('type_rule', 50);
             $table->date('date_rule');
             $table->char('weekday_rule', 50);
             $table->time('time_start')->nullable();
