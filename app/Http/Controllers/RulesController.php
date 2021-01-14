@@ -13,7 +13,7 @@ class RulesController extends Controller
 
     public function __constuct()
     {
-        $this->objRules= Rules::latest()->paginate(5);
+        $this->objRules= Rules::latest()->paginate();
     }
     /**
      * Display a listing of the resource.
@@ -64,9 +64,9 @@ class RulesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Rules $rule)
+    public function show()
     {
-        $rules = Rules::latest()->paginate(5);
+        $rules = Rules::latest()->paginate();
 
         return view('home', compact('rules'));
     }
@@ -103,8 +103,15 @@ class RulesController extends Controller
     public function destroy($id)
     {
         //
-        $rules = Rules::find($id);
+        //$deleted = Rules::table('DELETE FROM `desafio_db`.`rules` WHERE (`id` = ?)', [$id]);
+        //Rules::table('rules')->where('id', '=', $id)->delete();
+        // $rules = Rules::find($id);
+        // $id.destroy();
+        //Rules::destroy($id);
+        $rule = Rules::find($id);
+        $rule->delete();
 
-        return view('home');
+        $rules = Rules::latest()->paginate();
+        return redirect()->route('main');
     }
 }

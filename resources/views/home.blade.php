@@ -53,7 +53,7 @@
                     <input type="date" name="date_rule" class="toggle-item-rule input-date-rule center"/>
                     <div class="custom-checkbox ocult toggle-item-rule">
                         <div class="checkbox-group center ">
-                            <input type="radio" id="option-sun" name="weekday_rule" value='Domingo' checked>
+                            <input type="radio" id="option-sun" name="weekday_rule" value='Domingo'  <?php isset($_POST['type_rule']) ? 'checked' : '';?> >
                             <label for="option-sun">Dom</label>
                             <input type="radio" id="option-mod" name="weekday_rule" value='Segunda'>
                             <label for="option-mod">Seg</label>
@@ -86,19 +86,17 @@
                             <span>
                                 <h4>Tipo: {{ $rule->type_rule }}</h4>
                                 @if ($rule->date_rule)
-                                    <p>Dia: {{ $rule->date_rule }}</p>
+                                    <p>Dia: {{ date('d F Y', strtotime($rule->date_rule)) }}</p>
                                 @endif
                                 @if ($rule->weekday_rule)
                                     <p>Dia da semana: {{ $rule->weekday_rule }} </p>
                                 @endif
-                                <p>Horários: {{ $rule->time_start }} ás {{ $rule->time_start }}</p>
+                                <p>Horários: {{ date('G:i', strtotime($rule->time_start)) }} ás {{ date('G:i', strtotime($rule->time_end)) }}</p>
                             </span>
-                            <form action="{{ route('destroy', $rule->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" title="delete" style="border: none; background-color:transparent;">
-                                <i class="fas fa-trash" ></i>
-                            </button>
+                            <form action="{{ route('destroy', ['id' => $rule->id]) }}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
                             </form>
                         </li>
                         @endforeach

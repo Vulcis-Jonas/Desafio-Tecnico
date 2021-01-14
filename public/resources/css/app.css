@@ -382,17 +382,20 @@ header > span p {
     text-align: left;
     margin: 7px 15px;
 }
-.result-search li i {
+.result-search li form {
     display: flex;
-    margin: auto auto;
-    padding: 10px;
-    width: 50px;
-    font-size: 1.5em;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.result-search li form i {
+    font-size: 2.5em;
     color: gray;
     transition: color 0.3s;
 }
 
-.result-search li i:hover {
+.result-search li form i:hover {
     cursor: pointer;
     color: orangered;
 }

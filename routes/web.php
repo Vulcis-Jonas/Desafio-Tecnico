@@ -22,6 +22,5 @@ Route::get('/', [RulesController::class, 'create'])->name('main');
 Route::get('/show', [RulesController::class, 'show'])->name('show');
 Route::get('/rules', [RulesController::class, 'index'])->name('rules');
 Route::post('/store', [RulesController::class, 'store'])->name('store');
-Route::post('/destroy/{id}', [RulesController::class, 'destroy'])->name('destroy');
-Route::resource('rules', RulesController::class);
+Route::delete('/destroy/{id}', [RulesController::class, 'destroy'])->name('destroy');
 
