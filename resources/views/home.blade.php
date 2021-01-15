@@ -104,51 +104,25 @@
                 </div>
 
                 <div class="list-times toggle-item-content ocult">
-                    <input type="text" name="daterange" placeholder="Período "/>
+                    <form action="{{ route('search') }}" method="post">
+                        @csrf
+                        <input type="text" name="daterange" placeholder="Período " value="{{$valueDate}}"/>
+                        <button class="btn btn-danger" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
                     <ul class="result-search">
-                        <li>
-                            <span>
-                                <h4>Dia: 25 de Agosto de 2021</h4>
-                                <p>Horários: 14:00 às 15:00</p>
-                            </span>
-                        </li>
-                        <li>
-                            <span>
-                                <h4>Dia: 29 de Agosto de 2021</h4>
-                                <p>Horários: 08:30 às 11:00</p>
-                            </span>
-                        </li>
-                        <li>
-                            <span>
-                                <h4>Dia: 25 de Agosto de 2021</h4>
-                                <p>Horários: 14:00 às 15:00</p>
-                            </span>
-                        </li>
-                        <li>
-                            <span>
-                                <h4>Dia: 25 de Agosto de 2021</h4>
-                                <p>Horários: 14:00 às 15:00</p>
-                            </span>
-                        </li>
-                        <li>
-                            <span>
-                                <h4>Dia: 25 de Agosto de 2021</h4>
-                                <p>Horários: 14:00 às 15:00</p>
-                            </span>
-                        </li>
-                        <li>
-                            <span>
-                                <h4>Dia: 25 de Agosto de 2021</h4>
-                                <p>Horários: 14:00 às 15:00</p>
-                            </span>
-                        </li>
-                        <li>
-                            <span>
-                                <h4>Dia: 25 de Agosto de 2021</h4>
-                                <p>Horários: 14:00 às 15:00</p>
-                            </span>
-                        </li>
-                        </ul>
+                        @if ($times)
+                            @foreach ($times as $time)
+                                <li>
+                                    <span>
+                                        @if ($rule->date_rule)
+                                            <h4>Dia: {{ date('d F Y', strtotime($time->date_rule)) }}</h4>
+                                        @endif
+                                        <p>Horários: {{ date('G:i', strtotime($time->time_start)) }} ás {{ date('G:i', strtotime($time->time_end)) }}</p>
+                                    </span>
+                                </li>
+                            @endforeach
+                        @endif
+                    </ul>
                 </div>
             </aside>
         </section>
@@ -210,7 +184,6 @@
                 "autoApply": true,
                 },
                 function() {
-                    console.log('start, end, label');
                 }
                 );
         </script>

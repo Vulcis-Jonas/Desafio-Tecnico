@@ -33,9 +33,13 @@ class RulesController extends Controller
      */
     public function create(Rules $rule)
     {
+        $valueDate = "date('d/m/Y', strtotime('+0 day')". "-" ."date('d/m/Y', strtotime('+0 day')";
         $rules = Rules::latest()->paginate();
+        $from = date('Y-m-d', strtotime('+0 day'));
+        $to = date('Y-m-d', strtotime('+0 day'));
+        $times = Rules::whereBetween('date_rule', [$from, $to])->get();
 
-        return view('home', compact('rules'));
+        return view('home', compact('rules', 'times', 'valueDate'));
     }
 
     /**
@@ -64,11 +68,20 @@ class RulesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function search(Rules $rule)
+    public function search(Request $request)
     {
-        dd(Rules::where('date_rule', '=', '2021-01-12')->count());
-
-        return view('home', compact('rules'));
+        $valueDate = $request->daterange;
+        $fromRule = substr($valueDate, 0, 10);
+        $toRule = substr($valueDate, 13);
+        //dd(date('Y-m-d', strtotime(str_replace('/', '-', $fromRule))));
+        //echo "<script> console.log('1223'); </script>";
+        //dd(Rules::where('date_rule', '=', '2021-01-12')->count());
+        $rules = Rules::latest()->paginate();
+        $from = date('Y-m-d', strtotime(str_replace('/', '-', $fromRule)));
+        $to = date('Y-m-d', strtotime(str_replace('/', '-', $toRule)));
+        $times = Rules::whereBetween('date_rule', [$from, $to])->get();
+        //dd(Rules::whereBetween('date_rule', [$from, $to])->get());
+        return view('home', compact('rules', 'times', 'valueDate'));
     }
 
     /**
