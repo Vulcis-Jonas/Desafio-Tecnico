@@ -477,7 +477,3 @@ footer > ul > li > i {
 footer > ul > li:nth-child(2) i {
     color: yellow;
 }
-
-footer > ul > li:last-child i {
-    color: yellow;
-}

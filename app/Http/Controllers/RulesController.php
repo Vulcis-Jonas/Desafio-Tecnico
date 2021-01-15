@@ -56,6 +56,12 @@ class RulesController extends Controller
             'time_end' => 'required',
         ]);
 
+        if ($request->type_rule == 'Diariamente') {
+            
+        }
+
+        $rules = Rules::latest()->paginate();
+
         Rules::create($request->all());
 
         return redirect()->route('main')
@@ -79,6 +85,8 @@ class RulesController extends Controller
         $rules = Rules::latest()->paginate();
         $from = date('Y-m-d', strtotime(str_replace('/', '-', $fromRule)));
         $to = date('Y-m-d', strtotime(str_replace('/', '-', $toRule)));
+
+        dd( Rules::where('type_rule', ['Diariamente'])->get());
         $times = Rules::whereBetween('date_rule', [$from, $to])->get();
         //dd(Rules::whereBetween('date_rule', [$from, $to])->get());
         return view('home', compact('rules', 'times', 'valueDate'));
