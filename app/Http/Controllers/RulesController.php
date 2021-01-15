@@ -58,6 +58,19 @@ class RulesController extends Controller
             ->with('success', 'Project created successfully.');
     }
 
+      /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Rules $rule)
+    {
+        dd(Rules::where('date_rule', '=', '2021-01-12')->count());
+
+        return view('home', compact('rules'));
+    }
+
     /**
      * Display the specified resource.
      *
