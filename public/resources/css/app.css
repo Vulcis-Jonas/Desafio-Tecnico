@@ -37,13 +37,8 @@ body {
     font-size: 62.5%;
     max-width: 100%;
     font-family: "Nunito", sans-serif;
-    overflow: auto;
-    scrollbar-color: transparent transparent;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
     background-color: #eee;
     color: #222;
-    /*    overflow: hidden;*/
 }
 
 body::-webkit-scrollbar {
@@ -51,6 +46,9 @@ body::-webkit-scrollbar {
     height: 0;
 }
 
+button {
+    border: none;
+}
 a,
 button {
     text-decoration: none;
@@ -133,7 +131,7 @@ label {
 }
 
 input[type="text"],
-input[type="date"],
+input[name="date_rule"],
 input[type="time"] {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -158,6 +156,19 @@ input[type="checkbox"]:checked + label {
     border-bottom: 2px solid dodgerblue;
 }
 
+strong {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    margin: auto auto;
+    padding: 10px 30px;
+    border-radius: 5px;
+    background-color: orangered;
+    font-size: 2vh;
+    text-align: center;
+    color: white;
+}
+
 /* Box Model */
 
 *,
@@ -168,7 +179,7 @@ input[type="checkbox"]:checked + label {
     box-sizing: border-box;
 }
 
-/* Utilitarios */
+/* Utilits */
 
 .disable {
     cursor: not-allowed !important;
@@ -205,6 +216,8 @@ input[type="checkbox"]:checked + label {
 .ocult {
     display: none !important;
 }
+
+/* Body */
 
 section {
     display: flex;
@@ -248,6 +261,7 @@ section aside {
 }
 
 /* header */
+
 header {
     display: grid;
     align-content: center;
@@ -263,8 +277,6 @@ header > span {
     position: relative;
     font-size: 1.5vh;
     text-align: right;
-}
-header > span p {
 }
 
 .form-create-rule {
@@ -293,9 +305,6 @@ header > span p {
     margin: 10px;
 }
 
-.input-date-rule {
-}
-
 .form-time {
     display: flex;
     align-items: center;
@@ -305,6 +314,21 @@ header > span p {
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -0%);
+}
+
+.timepicker {
+    width: 25vw;
+    max-width: 200px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    box-shadow: 0px 0px 5px #ccc;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: 2vh;
+    color: #222;
 }
 
 .form-time i {
@@ -369,17 +393,20 @@ header > span p {
     text-align: left;
     margin: 7px 15px;
 }
-.result-search li i {
+.result-search li form {
     display: flex;
-    margin: auto auto;
-    padding: 10px;
-    width: 50px;
-    font-size: 1.5em;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.result-search li form i {
+    font-size: 2.5em;
     color: gray;
     transition: color 0.3s;
 }
 
-.result-search li i:hover {
+.result-search li form i:hover {
     cursor: pointer;
     color: orangered;
 }
@@ -392,13 +419,28 @@ header > span p {
     color: #222;
 }
 
-.list-times > input {
+.list-times form > input {
     display: inline-block;
     width: 60vw;
     max-width: 500px;
     text-align: center;
     font-size: 2vh;
     color: #222;
+}
+
+.list-times form i {
+    padding: 9px 15px;
+    text-align: center;
+    font-size: 2vh;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px #ccc;
+    color: #222;
+    transition: all 0.3s;
+}
+
+.list-times form i:hover {
+    font-size: 2vh;
+    color: orangered;
 }
 
 .list-times > .result-search li {
@@ -440,13 +482,9 @@ footer > ul > li {
 
 footer > ul > li > i {
     padding: 0px 10px;
-    color: orangered;
-}
-
-footer > ul > li:nth-child(3) i {
     color: limegreen;
 }
 
-footer > ul > li:last-child i {
+footer > ul > li:nth-child(2) i {
     color: yellow;
 }

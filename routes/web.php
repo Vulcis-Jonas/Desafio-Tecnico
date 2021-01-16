@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RulesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [RulesController::class, 'create'])->name('main');
+Route::get('/show', [RulesController::class, 'show'])->name('show');
+Route::post('/store', [RulesController::class, 'store'])->name('store');
+Route::get('/search', [RulesController::class, 'search'])->name('search');
+Route::delete('/destroy/{id}', [RulesController::class, 'destroy'])->name('destroy');
+
