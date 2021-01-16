@@ -14,13 +14,8 @@ use App\Http\Controllers\RulesController;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-
 Route::get('/', [RulesController::class, 'create'])->name('main');
 Route::get('/show', [RulesController::class, 'show'])->name('show');
-Route::get('/rules', [RulesController::class, 'index'])->name('rules');
 Route::post('/store', [RulesController::class, 'store'])->name('store');
 Route::get('/search', [RulesController::class, 'search'])->name('search');
 Route::delete('/destroy/{id}', [RulesController::class, 'destroy'])->name('destroy');

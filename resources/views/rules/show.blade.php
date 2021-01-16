@@ -1,7 +1,11 @@
 @extends('layouts.app')
 @section('content')
     <div class="toggle-item-content list-rules">
-        <p>Aqui está uma listar de todas as regras de atendimento criadas.</p>
+        @if (!$rules->isEmpty())
+            <p>Aqui está uma listar de todas as regras de atendimento criadas.</p>
+        @else
+            <p>Não existem regras criadas!</p>
+        @endif
         <ul class="result-search">
             @foreach ($rules as $rule)
             <li>

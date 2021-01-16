@@ -1,19 +1,9 @@
 const btnSelectTypeRule =  $('.radio-group > input');
-const btnSelectContent =  $('.navbar-vertical > a');
 
 const toggleRule = function (element) {
     if ($(element).css('display') === 'none') {
         $('.toggle-item-rule').removeClass('ocult');
         $('.toggle-item-rule').fadeOut(0);
-        $(element).fadeIn(300);
-        return;
-    }
-}
-
-const toggleContent = function (element) {
-    if ($(element).css('display') === 'none') {
-        $('.toggle-item-content').removeClass('ocult');
-        $('.toggle-item-content').fadeOut(0);
         $(element).fadeIn(300);
         return;
     }
@@ -33,16 +23,7 @@ $(btnSelectTypeRule[2]).on( "click", function() {
     console.log('2');
 });
 
-// $(btnSelectContent[0]).on( "click", function() {
-//     toggleContent('.form-create-rule');
-// });
-// $(btnSelectContent[1]).on( "click", function() {
-//     toggleContent('.list-rules');
-// });
-// $(btnSelectContent[2]).on( "click", function() {
-//     toggleContent('.list-times');
-// });
-
+// Configuração para a seleção de datas
 $('.timepicker').timepicker({
     timeFormat: 'HH:mm:ss',
     interval: 60,
@@ -55,11 +36,8 @@ $('.timepicker').timepicker({
     scrollbar: true
 });
 
-// $('form').submit(function (event) {
-//     return false;
-// });
+// Agrupa os valores de um formulario
 $.fn.serializeObject = function () {
-
     var o = {};
     var a = this.serializeArray();
     $.each(a, function () {
@@ -74,7 +52,6 @@ $.fn.serializeObject = function () {
     });
     return o;
 };
-var type = document.querySelector('input[name="type_rule"]:checked');
 
 $('.btn-form-submit').on( 'click', function() {
     let temp = $('.timepicker');

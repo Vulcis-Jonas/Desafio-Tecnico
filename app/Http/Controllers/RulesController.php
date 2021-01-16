@@ -211,12 +211,6 @@ class RulesController extends Controller
      */
     public function destroy($id)
     {
-        //
-        //$deleted = Rules::table('DELETE FROM `desafio_db`.`rules` WHERE (`id` = ?)', [$id]);
-        //Rules::table('rules')->where('id', '=', $id)->delete();
-        // $rules = Rules::find($id);
-        // $id.destroy();
-        //Rules::destroy($id);
         $rule = Rules::find($id);
         $rule->delete();
 
