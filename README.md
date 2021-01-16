@@ -1,4 +1,4 @@
-## Desafio Técnico
+# Desafio Técnico
 
 Neste desafio você deve criar uma pequena aplicação para facilitar o gerenciamento de
 horários de uma clínica! Ela deve satisfazer as seguintes necessidades:
@@ -8,7 +8,7 @@ horários de uma clínica! Ela deve satisfazer as seguintes necessidades:
 -   Listar regras de horários para atendimento
 -   Listar horários disponíveis dentro de um intervalo
 
-# Análise
+## Análise
 
 Serão avaliados os seguintes pontos:
 
@@ -16,6 +16,5 @@ Serão avaliados os seguintes pontos:
 -   Usabilidade
 -   Legibilidade do código
 
-**Jonas Teixeira**
+**Jonas Teixeira** **[E-mail](mailto:teixeiramao@gmail.com?subject=Olá%20vim%20do%20GitHub)**
 
--   **[E-mail](mailto:teixeiramao@gmail.com?subject=Olá%20vim%20do%20GitHub)**
