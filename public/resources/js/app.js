@@ -33,15 +33,15 @@ $(btnSelectTypeRule[2]).on( "click", function() {
     console.log('2');
 });
 
-$(btnSelectContent[0]).on( "click", function() {
-    toggleContent('.form-create-rule');
-});
-$(btnSelectContent[1]).on( "click", function() {
-    toggleContent('.list-rules');
-});
-$(btnSelectContent[2]).on( "click", function() {
-    toggleContent('.list-times');
-});
+// $(btnSelectContent[0]).on( "click", function() {
+//     toggleContent('.form-create-rule');
+// });
+// $(btnSelectContent[1]).on( "click", function() {
+//     toggleContent('.list-rules');
+// });
+// $(btnSelectContent[2]).on( "click", function() {
+//     toggleContent('.list-times');
+// });
 
 $('.timepicker').timepicker({
     timeFormat: 'HH:mm:ss',

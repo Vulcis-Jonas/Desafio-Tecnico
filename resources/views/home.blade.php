@@ -53,19 +53,19 @@
                     <input type="date" name="date_rule" class="toggle-item-rule input-date-rule center"/>
                     <div class="custom-checkbox ocult toggle-item-rule">
                         <div class="checkbox-group center ">
-                            <input type="radio" id="option-sun" name="weekday_rule" value='Domingo'  <?php isset($_POST['type_rule']) ? 'checked' : '';?> >
+                            <input type="radio" id="option-sun" name="weekday_rule" value='Sunday'  <?php isset($_POST['type_rule']) ? 'checked' : '';?> >
                             <label for="option-sun">Dom</label>
-                            <input type="radio" id="option-mod" name="weekday_rule" value='Segunda'>
+                            <input type="radio" id="option-mod" name="weekday_rule" value='Monday'>
                             <label for="option-mod">Seg</label>
-                            <input type="radio" id="option-tue" name="weekday_rule" value='Terça'>
+                            <input type="radio" id="option-tue" name="weekday_rule" value='Tuesday'>
                             <label for="option-tue">Ter</label>
-                            <input type="radio" id="option-wed" name="weekday_rule" value='Quarta'>
+                            <input type="radio" id="option-wed" name="weekday_rule" value='Wednesday'>
                             <label for="option-wed">Qua</label>
-                            <input type="radio" id="option-thu" name="weekday_rule" value='Quinta'>
+                            <input type="radio" id="option-thu" name="weekday_rule" value='Thursday'>
                             <label for="option-thu">Qui</label>
-                            <input type="radio" id="option-fri" name="weekday_rule" value='Sexta'>
+                            <input type="radio" id="option-fri" name="weekday_rule" value='Friday'>
                             <label for="option-fri">Sex</label>
-                            <input type="radio" id="option-sat" name="weekday_rule" value='Sábado'>
+                            <input type="radio" id="option-sat" name="weekday_rule" value='Saturday'>
                             <label for="option-sat">Sab</label>
                         </div>
                     </div>
@@ -114,10 +114,13 @@
                             @foreach ($times as $time)
                                 <li>
                                     <span>
-                                        @if ($rule->date_rule)
-                                            <h4>Dia: {{ date('d F Y', strtotime($time->date_rule)) }}</h4>
+                                        @if ($time["type_rule"] == "Uma vez")
+                                            <h4>Dia: {{ $time["date_rule"] }}</h4>
                                         @endif
-                                        <p>Horários: {{ date('G:i', strtotime($time->time_start)) }} ás {{ date('G:i', strtotime($time->time_end)) }}</p>
+                                        @if ($time["type_rule"] != "Uma vez")
+                                            <h4>Dia: {{ $time["date_rule"] }}</h4>
+                                        @endif
+                                        <p>Horários: {{ $time["time_rule"] }}</p>
                                     </span>
                                 </li>
                             @endforeach

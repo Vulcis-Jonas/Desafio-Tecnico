@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Rules;
 use App\Http\Controllers\RulesController;
-
+use DateTime;
+use PDO;
 class RulesController extends Controller
 {
     public $objRules;
@@ -33,13 +34,8 @@ class RulesController extends Controller
      */
     public function create(Rules $rule)
     {
-        $valueDate = "date('d/m/Y', strtotime('+0 day')". "-" ."date('d/m/Y', strtotime('+0 day')";
         $rules = Rules::latest()->paginate();
-        $from = date('Y-m-d', strtotime('+0 day'));
-        $to = date('Y-m-d', strtotime('+0 day'));
-        $times = Rules::whereBetween('date_rule', [$from, $to])->get();
-
-        return view('home', compact('rules', 'times', 'valueDate'));
+        return view('rules.create', compact('rules'));
     }
 
     /**
@@ -56,16 +52,35 @@ class RulesController extends Controller
             'time_end' => 'required',
         ]);
 
-        if ($request->type_rule == 'Diariamente') {
-            
+
+
+        if ($request->type_rule == 'Uma vez' && empty($request->date_rule)) {
+
+            $message="Insira uma data!";
+            return view('rules.create', compact('message'));
         }
+
+        if ($request->type_rule == 'Semanalmente' && empty($request->weekday_rule)) {
+
+            $message="Escolha um dia da semana!";
+            return view('rules.create', compact('message'));
+        }
+
+        if ($request->time_start >= $request->time_end) {
+            $message="Insera um intervalo de horário correto!";
+            return view('rules.create', compact('message'));
+        }
+
+        if ($request->type_rule == 'Diariamente') {
+        }
+
 
         $rules = Rules::latest()->paginate();
 
         Rules::create($request->all());
 
         return redirect()->route('main')
-            ->with('success', 'Project created successfully.');
+            ->with('alert-danger', 'danger');
     }
 
       /**
@@ -86,10 +101,70 @@ class RulesController extends Controller
         $from = date('Y-m-d', strtotime(str_replace('/', '-', $fromRule)));
         $to = date('Y-m-d', strtotime(str_replace('/', '-', $toRule)));
 
-        dd( Rules::where('type_rule', ['Diariamente'])->get());
-        $times = Rules::whereBetween('date_rule', [$from, $to])->get();
-        //dd(Rules::whereBetween('date_rule', [$from, $to])->get());
-        return view('home', compact('rules', 'times', 'valueDate'));
+        $dayRules = Rules::whereBetween('date_rule', [$from, $to])->get()->toArray();
+        $dailyRules = Rules::where('type_rule', ['Diariamente'])->get()->toArray();
+        $weekRules = Rules::where('type_rule', ['Semanalmente'])->get()->toArray();
+
+        $fromTime = new DateTime($from);
+        $toTime = new DateTime($to);
+        $interval = $toTime->diff($fromTime);
+        $times = array(
+            array(
+                "type_rule" => '',
+                "date_rule" => '',
+                "time_rule" => '',
+            )
+        );
+        if($dayRules || $dailyRules || $weekRules) {
+            $time_rule_day = "";
+            for ( $i = 0; $i < $interval->days; $i++ ) {
+                if (count($dailyRules) > $i) {
+                    $time_rule_day = $time_rule_day . " | " .date('G:i', strtotime($dailyRules[$i]["time_start"])) . " ás " . date('G:i', strtotime($dailyRules[$i]["time_end"]));
+                    $time = array(
+                        array(
+                            "type_rule" => $dailyRules[$i]["type_rule"],
+                            "date_rule" => 'Todos os dias',
+                            "time_rule" => $time_rule_day,
+                        )
+                    );
+
+                    if($dailyRules[$i] == end($dailyRules)){
+                        $times = array_merge($times, $time);
+                    }
+
+                }
+            }
+            for ( $i = 0; $i < $interval->days; $i++ ) {
+                if (count($weekRules) > $i) {
+                    $time = array(
+                        array(
+                            "type_rule" => $weekRules[$i]["type_rule"],
+                            "date_rule" => '' . date('d-m-Y', strtotime("next ". $weekRules[$i]["weekday_rule"])) .'',
+                            "time_rule" => date('G:i', strtotime($weekRules[$i]["time_start"])) . " ás " . date('G:i', strtotime($weekRules[$i]["time_end"])),
+
+                        )
+                    );
+                    $times = array_merge($times, $time);
+                }
+                if (count($dayRules) > $i) {
+                    $time = array(
+                        array(
+                            "type_rule" => $dayRules[$i]["type_rule"],
+                            "date_rule" => '' . date('d-m-Y', strtotime($dayRules[$i]["date_rule"])) .'',
+                            "time_rule" => date('G:i', strtotime($dayRules[$i]["time_start"])) . " ás " . date('G:i', strtotime($dayRules[$i]["time_end"])),
+
+                        )
+                    );
+                    $times = array_merge($times, $time);
+                }
+            }
+        }
+
+
+        unset($times[0]);
+        //dd($times);
+        //$times = Rules::whereBetween('date_rule', [$from, $to])->get()->toArray();
+        return view('rules.search', compact('rules', 'times', 'valueDate'));
     }
 
     /**
@@ -102,7 +177,7 @@ class RulesController extends Controller
     {
         $rules = Rules::latest()->paginate();
 
-        return view('home', compact('rules'));
+        return view('rules.show', compact('rules'));
     }
 
     /**
@@ -146,6 +221,6 @@ class RulesController extends Controller
         $rule->delete();
 
         $rules = Rules::latest()->paginate();
-        return redirect()->route('main');
+        return redirect()->route('show');
     }
 }
